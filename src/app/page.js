@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export default function Home() {
   return (
-    <div className='relative flex flex-col items-center justify-between h-full	w-full overflow-hidden rounded-lg login-container'>
+    <div className='relative flex flex-col items-center justify-between h-full w-full overflow-hidden md:rounded-lg login-container'>
       {/* <video className='w-full h-full' autoPlay loop muted src={'../../login.mp4'} /> */}
       <video className='object-cover h-full	w-full' src='/login.mp4' autoPlay loop muted type='video/mp4' />
       <div className='absolute z-20 flex flex-col items-center justify-between mt-32'>
