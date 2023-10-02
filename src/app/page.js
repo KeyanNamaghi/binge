@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export default function Home() {
   return (
-    <div className='relative flex flex-col items-center justify-between h-full w-full overflow-hidden md:rounded-lg login-container bg-black'>
+    <div className='relative flex flex-col items-center justify-between w-[100vw] md:w-full overflow-hidden md:rounded-lg login-container bg-black h-[100dvh] md:h-full '>
       <video className='object-cover h-full	w-full' src='/login.mp4' autoPlay loop muted type='video/mp4' />
       <div className='absolute z-20 flex flex-col items-center justify-between mt-32'>
         <svg className='w-24' viewBox='-114.507 0 331.888 125.996' width='331.888' height='45.996'>
