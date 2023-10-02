@@ -18,9 +18,18 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background-color: #672a5f;
-  background: linear-gradient(180deg, rgba(103, 42, 95, 0.6) 0%, rgba(103, 42, 95, 0.8) 75%, rgba(103, 42, 95, 1) 100%);
+  background-color: black;
   font-family: Modern Era, sans-serif;
+
+  @media (min-width: 768px) {
+    background-color: #672a5f;
+    background: linear-gradient(
+      180deg,
+      rgba(103, 42, 95, 0.6) 0%,
+      rgba(103, 42, 95, 0.8) 75%,
+      rgba(103, 42, 95, 1) 100%
+    );
+  }
 }
 
 .login-container::before {
