@@ -5,7 +5,7 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-end-rgb: #672a5f;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,10 +18,51 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: #672a5f;
+  background: linear-gradient(180deg, rgba(103, 42, 95, 0.6) 0%, rgba(103, 42, 95, 0.8) 75%, rgba(103, 42, 95, 1) 100%);
+  font-family: Modern Era, sans-serif;
+}
+
+.login-container::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: #000;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.75));
+  border-radius: 8px;
+}
+
+strong {
+  text-decoration-line: underline;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  text-decoration-line: none;
+  height: 46px;
+  border-radius: 9999px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  background-color: rgb(103 41 95 / var(--tw-bg-opacity));
+  color: rgb(255 254 253 / var(--tw-text-opacity));
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: rgb(103 41 95 / var(--tw-bg-opacity));
+  color: rgb(255 254 253 / var(--tw-text-opacity));
+  background-color: rgb(26 26 26 / var(--tw-bg-opacity));
+  color: rgb(255 254 253 / var(--tw-text-opacity));
 }
