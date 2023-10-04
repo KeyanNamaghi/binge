@@ -1,5 +1,5 @@
 import Image from 'next/image'
-// import video from '../../login.mp4'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -35,9 +35,9 @@ export default function Home() {
           By tapping Log in, you agree to our <strong>Terms of Service</strong>. Learn how we collect, abuse and
           profiteer using your data in our <strong>Data Policy</strong> and <strong>Cookies Policy</strong>.
         </p>
-        <a className='btn mt-4 w-full' href='https://giphy.com/clips/Rin3bJMT1guHPZes5u'>
+        <Link className='btn mt-4 w-full' href='/home'>
           Log in
-        </a>
+        </Link>
       </div>
     </div>
   )
