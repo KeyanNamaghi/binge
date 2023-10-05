@@ -5,7 +5,7 @@ import { useSelectedLayoutSegment } from 'next/navigation'
 export default function NavigationBarElement({ children, tab }) {
   const segment = useSelectedLayoutSegment()
 
-  const className = segment === tab ? 'stroke-white fill-white' : 'stroke-slate-500 fill-slate-500'
+  const className = segment === tab ? 'stroke-white fill-white' : 'stroke-neutral-500 fill-neutral-500'
 
   return (
     <Link href={`/${tab}`}>

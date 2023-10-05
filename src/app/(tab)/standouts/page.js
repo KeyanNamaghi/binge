@@ -11,10 +11,10 @@ export default function Home() {
   ]
   const carousel = profiles.map(({ name, image, profile, tag }) => {
     return (
-      <div key={image} class='carousel-item bg-white shadow-lg rounded-lg h-full flex flex-col justify-between'>
+      <div key={image} className='carousel-item bg-white shadow-lg rounded-lg h-full flex flex-col justify-between'>
         <div className='flex flex-col m-4 text-xs text-left font-bold gap-4'>
           <span className='h-4'>{tag}</span>
-          <Image height={256} width={256} alt={image} src={`/${image}.jpeg`} class='rounded-box rounded-lg h-64' />
+          <Image height={256} width={256} alt={image} src={`/${image}.jpeg`} className='rounded-box rounded-lg h-64' />
         </div>
         <div className={`flex m-4 gap-4 items-center ${profile}`}>
           <SettingsIcon height={50} />
@@ -36,7 +36,9 @@ export default function Home() {
         Outstanding content from those most of your type. Refreshed daily. Okay, not really. But it&apos;s a nice
         thought.
       </p>
-      <div class='carousel carousel-center max-w-md p-4 space-x-4 bg-neutral rounded-box h-full w-full'>{carousel}</div>
+      <div className='carousel carousel-center max-w-md p-4 space-x-4 bg-neutral rounded-box h-full w-full'>
+        {carousel}
+      </div>
     </div>
   )
 }

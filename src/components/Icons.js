@@ -67,9 +67,9 @@ export const MatchesIcon = () => {
   )
 }
 
-export const SettingsIcon = ({ height = 20 }) => {
+export const SettingsIcon = ({ height = 20, className = '' }) => {
   return (
-    <svg viewBox='0 0 100 100' height={height}>
+    <svg viewBox='0 0 100 100' height={height} className={className}>
       <circle cx='50' cy='50' r='50' />
     </svg>
   )
