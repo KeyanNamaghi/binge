@@ -28,7 +28,7 @@ export default function Home() {
     <div className='flex flex-col items-center justify-center w-full h-full rounded-lg p-4'>
       <div className='flex items-center justify-between w-full mt-4 mb-8'>
         <h1 className='text-2xl font-bold text-center text-slate-900'>Standouts</h1>
-        <button className='py-2 px-4 rounded-full bg-hingeLightPurple hover:bg-hingePurple hover:text-white font-bold'>
+        <button className='py-2 px-4 rounded-full bg-primary hover:bg-primaryDark hover:text-white font-bold'>
           Roses (∞)
         </button>
       </div>

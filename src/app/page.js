@@ -35,7 +35,7 @@ export default function Home() {
           By tapping Log in, you agree to our <strong>Terms of Service</strong>. Learn how we collect, abuse and
           profiteer using your data in our <strong>Data Policy</strong> and <strong>Cookies Policy</strong>.
         </p>
-        <Link className='btn mt-4 w-full' href='/home'>
+        <Link className='btn mt-4 w-full text-base' href='/home'>
           Log in
         </Link>
       </div>

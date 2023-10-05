@@ -38,7 +38,7 @@ const heys = [
 export default function Matches() {
   return (
     <div className='absolute flex flex-col items-center justify-center w-full h-full rounded-lg px-4 pt-4'>
-      <div className='flex items-center justify-between w-full mt-4 mb-8'>
+      <div className='flex items-center justify-between w-full mt-4 mb-4'>
         <h1 className='text-2xl font-bold text-center text-slate-900'>Matches</h1>
       </div>
       <div className='flex flex-col p-4 h-full w-full overflow-scroll'>

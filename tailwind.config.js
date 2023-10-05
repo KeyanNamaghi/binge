@@ -8,8 +8,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        hingePurple: '#67295f',
-        hingeLightPurple: '#ccb1c9',
+        primaryDark: '#67295f',
+        primary: '#BCA8BF',
+        primaryLight: '#EBE4EB',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
