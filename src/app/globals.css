@@ -74,3 +74,57 @@ strong {
   background-color: rgb(26 26 26 / var(--tw-bg-opacity));
   color: rgb(255 254 253 / var(--tw-text-opacity));
 }
+
+.carousel {
+  display: inline-flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.carousel-vertical {
+  flex-direction: column;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.carousel-item {
+  box-sizing: content-box;
+  display: flex;
+  flex: none;
+  scroll-snap-align: start;
+}
+
+.carousel-center .carousel-item {
+  scroll-snap-align: center;
+}
+
+.carousel-end .carousel-item {
+  scroll-snap-align: end;
+}
+
+@layer utilities {
+  .fill-pastel-pink {
+    fill: #ffc0cb;
+  }
+  .fill-pastel-blue {
+    fill: #aec6cf;
+  }
+  .fill-pastel-green {
+    fill: #b0e57c;
+  }
+  .fill-pastel-yellow {
+    fill: #ffff99;
+  }
+  .fill-pastel-orange {
+    fill: #ffd700;
+  }
+  .fill-pastel-purple {
+    fill: #b19cd9;
+  }
+  .fill-pastel-brown {
+    fill: #987654;
+  }
+}
