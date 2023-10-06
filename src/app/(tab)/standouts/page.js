@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { SettingsIcon } from '@/components/Icons'
 
 export default function Home() {
   const profiles = [
@@ -9,7 +8,7 @@ export default function Home() {
     { image: 'say-cheese', name: 'Viljami', profile: 'fill-pastel-brown', tag: '' },
     { image: 'workout', name: 'Oona', profile: 'fill-pastel-purple', tag: 'My quarter-life crisis looks like' },
   ]
-  const carousel = profiles.map(({ name, image, profile, tag }) => {
+  const carousel = profiles.map(({ name, image, profile, tag }, index) => {
     return (
       <div key={image} className='carousel-item bg-white shadow-lg rounded-lg h-full flex flex-col justify-between'>
         <div className='flex flex-col m-4 text-xs text-left font-bold gap-4'>
@@ -17,7 +16,13 @@ export default function Home() {
           <Image height={256} width={256} alt={image} src={`/${image}.jpeg`} className='rounded-box rounded-lg h-64' />
         </div>
         <div className={`flex m-4 gap-4 items-center ${profile}`}>
-          <SettingsIcon height={50} />
+          <Image
+            height={50}
+            width={50}
+            alt={name}
+            src={`/profile/${index + 6}.png`}
+            className='rounded-box rounded-full'
+          />
           <h2>{name}</h2>
         </div>
       </div>
