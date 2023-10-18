@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <div className='flex items-center justify-center w-full h-full rounded-lg'>
+    <div className='flex h-full w-full items-center justify-center rounded-lg'>
       <svg className='w-24' viewBox='-114.507 0 331.888 125.996' width='331.888' height='125.996'>
         <g fill='currentColor' id='g14' transform='matrix(1, 0, 0, 1, -114.619141, 0)'>
           <path

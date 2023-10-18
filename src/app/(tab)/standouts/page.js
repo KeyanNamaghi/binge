@@ -10,12 +10,12 @@ export default function Home() {
   ]
   const carousel = profiles.map(({ name, image, profile, tag }, index) => {
     return (
-      <div key={image} className='carousel-item bg-white shadow-lg rounded-lg h-full flex flex-col justify-between'>
-        <div className='flex flex-col m-4 text-xs text-left font-bold gap-4'>
+      <div key={image} className='carousel-item flex h-full flex-col justify-between rounded-lg bg-white shadow-lg'>
+        <div className='m-4 flex flex-col gap-4 text-left text-xs font-bold'>
           <span className='h-4'>{tag}</span>
-          <Image height={256} width={256} alt={image} src={`/${image}.jpeg`} className='rounded-box rounded-lg h-64' />
+          <Image height={256} width={256} alt={image} src={`/${image}.jpeg`} className='rounded-box h-64 rounded-lg' />
         </div>
-        <div className={`flex m-4 gap-4 items-center ${profile}`}>
+        <div className={`m-4 flex items-center gap-4 ${profile}`}>
           <Image
             height={50}
             width={50}
@@ -30,18 +30,18 @@ export default function Home() {
   })
 
   return (
-    <div className='flex flex-col items-center justify-center w-full h-full rounded-lg p-4'>
-      <div className='flex items-center justify-between w-full mt-4 mb-8'>
-        <h1 className='text-2xl font-bold text-center text-slate-900'>Standouts</h1>
-        <button className='py-2 px-4 rounded-full bg-primary hover:bg-primaryDark hover:text-white font-bold'>
+    <div className='flex h-full w-full flex-col items-center justify-center rounded-lg'>
+      <div className='mb-8 mt-4 flex w-full items-center justify-between px-4 pt-4'>
+        <h1 className='text-center text-2xl font-bold text-slate-900'>Standouts</h1>
+        <button className='rounded-full bg-primary px-4 py-2 font-bold hover:bg-primaryDark hover:text-white'>
           Roses (∞)
         </button>
       </div>
-      <p className='text-slate-900 text-xs mb-8'>
+      <p className='mb-8 px-4 text-xs text-slate-900'>
         Outstanding content from those most of your type. Refreshed daily. Okay, not really. But it&apos;s a nice
         thought.
       </p>
-      <div className='carousel carousel-center max-w-md p-4 space-x-4 bg-neutral rounded-box h-full w-full'>
+      <div className='carousel carousel-center bg-neutral rounded-box mx-4 h-full w-full max-w-md space-x-4 p-4'>
         {carousel}
       </div>
     </div>

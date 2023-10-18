@@ -17,11 +17,11 @@ function debounce(func, timeout = 20) {
 
 const ChatPanel = ({ name, message, icon }) => {
   return (
-    <div className='flex items-center justify-center w-full h-fit py-4 border-t'>
+    <div className='flex h-fit w-full items-center justify-center border-t py-4'>
       <Image height={50} width={50} alt={name} src={`/profile/${icon + 1}.png`} className='rounded-box rounded-full' />
-      <div className='flex flex-col flex-auto pl-4 overflow-auto'>
+      <div className='flex flex-auto flex-col overflow-auto pl-4'>
         <h2 className='font-bold'>{name}</h2>
-        <p className='text-xs truncate'>{message}</p>
+        <p className='truncate text-xs'>{message}</p>
       </div>
     </div>
   )
@@ -50,21 +50,21 @@ export default function Matches() {
   const [scroll, setScroll] = useState(0)
 
   return (
-    <div className='absolute flex flex-col items-center justify-center w-full h-full rounded-lg'>
+    <div className='absolute flex h-full w-full flex-col items-center justify-center rounded-lg'>
       <div
-        className={`flex items-center justify-between w-full p-4 py-2 ${
-          scroll > 16 ? 'border-b mt-4' : 'mt-4'
+        className={`flex w-full items-center justify-between p-4 py-2 ${
+          scroll > 16 ? 'mt-4 border-b' : 'mt-4'
         }   transition-all`}>
         <div
-          className={`flex justify-between w-full m-0 ${
-            scroll > 16 ? 'scale-75 -translate-x-10' : ''
+          className={`m-0 flex w-full justify-between ${
+            scroll > 16 ? '-translate-x-10 scale-75' : ''
           }   transition-all`}>
-          <h1 className='text-2xl font-bold text-center text-slate-900'>Matches</h1>
+          <h1 className='text-center text-2xl font-bold text-slate-900'>Matches</h1>
         </div>
       </div>
 
       <div
-        className='flex flex-col p-2 h-full w-full overflow-scroll px-4'
+        className='flex h-full w-full flex-col overflow-scroll p-2 px-4'
         onScroll={debounce((e) => setScroll(e.target.scrollTop))}>
         {heys.map(([message, person], index) => (
           <ChatPanel key={person} name={person} message={message} icon={index} />

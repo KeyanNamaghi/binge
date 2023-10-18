@@ -24,8 +24,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body className={`${font.className} flex flex-col items-center justify-between min-h-screen`}>
-        <main className='grid grid-cols-1	w-full h-[100dvh] md:h-full items-center justify-between overflow-hidden bg-white md:w-[22vw] md:min-w-[380px] md:min-h-[85vh] md:m-auto md:rounded-2xl border-0 md:border-8 border-slate-900'>
+      <body className={`${font.className} flex min-h-screen flex-col items-center justify-between`}>
+        <main className='grid h-[100dvh]	w-full grid-cols-1 items-center justify-between overflow-hidden border-0 border-slate-900 bg-white md:m-auto md:h-full md:min-h-[85vh] md:w-[22vw] md:min-w-[380px] md:rounded-2xl md:border-8'>
           {children}
         </main>
       </body>

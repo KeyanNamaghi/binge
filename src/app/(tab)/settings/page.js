@@ -11,33 +11,33 @@ import {
 
 export default function Home() {
   return (
-    <div className='absolute flex flex-col items-center justify-center w-full h-full rounded-lg px-4 pt-4 overflow-scroll '>
-      <div className='flex gap-4 items-center w-full my-6'>
+    <div className='absolute flex h-full w-full flex-col items-center justify-center overflow-scroll rounded-lg px-4 pt-4 '>
+      <div className='my-6 flex w-full items-center gap-4'>
         <SettingsIcon height={40} className='shrink-0' />
         <div className='flex flex-col'>
           <h1 className='text-xl font-bold text-slate-900'>Petteri</h1>
           <p className='text-xs'>Binge member</p>
         </div>
       </div>
-      <div className='text-center p-6 text-sm bg-primaryLight rounded-xl'>
-        <div className='rounded-full bg-primary w-fit p-2 m-auto mb-4'>
+      <div className='rounded-xl bg-primaryLight p-6 text-center text-sm'>
+        <div className='m-auto mb-4 w-fit rounded-full bg-primary p-2'>
           <MicrophoneIcon />
         </div>
-        <h2 className='font-bold mb-2'>Embarrass yourself through voice</h2>
+        <h2 className='mb-2 font-bold'>Embarrass yourself through voice</h2>
         <p>Add a Voice Prompt and let everyone hear what makes you truly deranged.</p>
-        <button className='btn mt-6 w-full text-white text-sm'>Please don&apos;t</button>
+        <button className='btn mt-6 w-full text-sm text-white'>Please don&apos;t</button>
       </div>
 
-      <div className='flex flex-col pt-4 h-full w-full text-sm'>
-        <div className='flex items-center w-full h-fit py-4 border-t border-neutral-300 justify-between'>
+      <div className='flex h-full w-full flex-col pt-4 text-sm'>
+        <div className='flex h-fit w-full items-center justify-between border-t border-neutral-300 py-4'>
           <span>Edit Profile</span>
           <PencilIcon />
         </div>
-        <div className='flex items-center w-full h-fit py-4 border-t border-neutral-300 justify-between'>
+        <div className='flex h-fit w-full items-center justify-between border-t border-neutral-300 py-4'>
           <span>Preferences</span>
           <SlidersIcon />
         </div>
-        <div className='flex items-center w-full h-fit py-4 border-t border-neutral-300 justify-between'>
+        <div className='flex h-fit w-full items-center justify-between border-t border-neutral-300 py-4'>
           <span>Settings</span>
           <GearIcon />
         </div>
@@ -45,11 +45,11 @@ export default function Home() {
           <span>What Works</span>
           <LightbulbIcon />
         </div> */}
-        <div className='flex items-center w-full h-fit py-4 border-t border-neutral-300 justify-between'>
+        <div className='flex h-fit w-full items-center justify-between border-t border-neutral-300 py-4'>
           <span>Help</span>
           <QuestionIcon />
         </div>
-        <div className='flex items-center w-full h-fit py-4 border-t border-neutral-300 justify-between'>
+        <div className='flex h-fit w-full items-center justify-between border-t border-neutral-300 py-4'>
           <Link href='/'>
             <span>Log Out</span>
           </Link>
