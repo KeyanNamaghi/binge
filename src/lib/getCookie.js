@@ -1,4 +1,5 @@
 function getCookie(cookieName) {
+  if (typeof window === 'undefined') return ''
   const name = cookieName + '='
   const decodedCookie = decodeURIComponent(document.cookie)
   const cookieArray = decodedCookie.split(';')
