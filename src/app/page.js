@@ -2,28 +2,13 @@
 import { useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-
-function getCookie(cookieName) {
-  const name = cookieName + '='
-  const decodedCookie = decodeURIComponent(document.cookie)
-  const cookieArray = decodedCookie.split(';')
-
-  for (let i = 0; i < cookieArray.length; i++) {
-    let cookie = cookieArray[i]
-    while (cookie.charAt(0) === ' ') {
-      cookie = cookie.substring(1)
-    }
-    if (cookie.indexOf(name) === 0) {
-      return cookie.substring(name.length, cookie.length)
-    }
-  }
-  return ''
-}
+import { getCookie } from '@/lib/getCookie'
+import { usernameCookie } from '@/lib/constants'
 
 export default function Home() {
   const router = useRouter()
-  const username = getCookie('username')
-  const loginHref = username ? '/home' : '/login'
+  const username = getCookie(usernameCookie)
+  const loginHref = username ? '/standouts' : '/login'
 
   useEffect(() => {
     router.prefetch('/home')
@@ -34,9 +19,9 @@ export default function Home() {
   }, [router])
 
   return (
-    <div className='relative flex flex-col items-center justify-between w-[100vw] md:w-full overflow-hidden md:rounded-lg login-container bg-black h-[100dvh] md:h-full '>
-      <video className='object-cover h-full	w-full' src='/login.mp4' autoPlay loop muted type='video/mp4' />
-      <div className='absolute z-20 flex flex-col items-center justify-between mt-32'>
+    <div className='login-container relative flex h-[100dvh] w-[100vw] flex-col items-center justify-between overflow-hidden bg-black md:h-full md:w-full md:rounded-lg '>
+      <video className='h-full w-full	object-cover' src='/login.mp4' autoPlay loop muted type='video/mp4' />
+      <div className='absolute z-20 mt-32 flex flex-col items-center justify-between'>
         <svg className='w-24' viewBox='-114.507 0 331.888 125.996' width='331.888' height='45.996'>
           <g fill='white' id='g14' transform='matrix(1, 0, 0, 1, -114.619141, 0)'>
             <path
@@ -59,9 +44,9 @@ export default function Home() {
               id='path-1'></path>
           </g>
         </svg>
-        <p className='font-bold text-lg text-white'>Designed by an idiot.</p>
+        <p className='text-lg font-bold text-white'>Designed by an idiot.</p>
       </div>
-      <div className='absolute z-20 flex flex-col items-center justify-between mt-32 p-6 bottom-2 text-center	text-white text-xs'>
+      <div className='absolute bottom-2 z-20 mt-32 flex flex-col items-center justify-between p-6 text-center	text-xs text-white'>
         <p>
           By tapping Log in, you agree to our <strong>Terms of Service</strong>. Learn how we collect, abuse and
           profiteer using your data in our <strong>Data Policy</strong> and <strong>Cookies Policy</strong>.

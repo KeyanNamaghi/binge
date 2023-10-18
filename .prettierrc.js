@@ -11,6 +11,8 @@ const prettierconfig = {
   tabWidth: 2,
   trailingComma: 'all',
   useTabs: false,
+  plugins: ['prettier-plugin-tailwindcss'],
+  tailwindConfig: './tailwind.config.js',
   overrides: [
     {
       files: '*.json',
