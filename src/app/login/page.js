@@ -23,19 +23,9 @@ function getCookie(cookieName) {
 export default function Home() {
   const router = useRouter()
   const username = getCookie('username')
-  const loginHref = username ? '/home' : '/login'
-
-  useEffect(() => {
-    router.prefetch('/home')
-    router.prefetch('/standouts')
-    router.prefetch('/likes-you')
-    router.prefetch('/matches')
-    router.prefetch('/settings')
-  }, [router])
 
   return (
-    <div className='relative flex flex-col items-center justify-between w-[100vw] md:w-full overflow-hidden md:rounded-lg login-container bg-black h-[100dvh] md:h-full '>
-      <video className='object-cover h-full	w-full' src='/login.mp4' autoPlay loop muted type='video/mp4' />
+    <div className='relative flex flex-col items-center justify-between w-[100vw] md:w-full overflow-hidden md:rounded-lg bg-white h-[100dvh] md:h-full'>
       <div className='absolute z-20 flex flex-col items-center justify-between mt-32'>
         <svg className='w-24' viewBox='-114.507 0 331.888 125.996' width='331.888' height='45.996'>
           <g fill='white' id='g14' transform='matrix(1, 0, 0, 1, -114.619141, 0)'>
@@ -59,16 +49,7 @@ export default function Home() {
               id='path-1'></path>
           </g>
         </svg>
-        <p className='font-bold text-lg text-white'>Designed by an idiot.</p>
-      </div>
-      <div className='absolute z-20 flex flex-col items-center justify-between mt-32 p-6 bottom-2 text-center	text-white text-xs'>
-        <p>
-          By tapping Log in, you agree to our <strong>Terms of Service</strong>. Learn how we collect, abuse and
-          profiteer using your data in our <strong>Data Policy</strong> and <strong>Cookies Policy</strong>.
-        </p>
-        <Link className='btn mt-4 w-full text-base' href={loginHref}>
-          Log in
-        </Link>
+        <p className='font-bold text-lg text-back'>Designed by an idiot.</p>
       </div>
     </div>
   )

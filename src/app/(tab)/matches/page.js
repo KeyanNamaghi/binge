@@ -47,7 +47,6 @@ const heys = [
 ]
 
 export default function Matches() {
-  // useEffect(() => {}, [])
   const [scroll, setScroll] = useState(0)
 
   return (

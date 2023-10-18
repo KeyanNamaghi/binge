@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import {
   GearIcon,
   LightbulbIcon,
@@ -10,7 +11,7 @@ import {
 
 export default function Home() {
   return (
-    <div className='absolute flex flex-col items-center justify-center w-full h-full rounded-lg px-4 pt-4'>
+    <div className='absolute flex flex-col items-center justify-center w-full h-full rounded-lg px-4 pt-4 overflow-scroll '>
       <div className='flex gap-4 items-center w-full my-6'>
         <SettingsIcon height={40} className='shrink-0' />
         <div className='flex flex-col'>
@@ -27,7 +28,7 @@ export default function Home() {
         <button className='btn mt-6 w-full text-white text-sm'>Please don&apos;t</button>
       </div>
 
-      <div className='flex flex-col pt-4 h-full w-full overflow-scroll text-sm'>
+      <div className='flex flex-col pt-4 h-full w-full text-sm'>
         <div className='flex items-center w-full h-fit py-4 border-t border-neutral-300 justify-between'>
           <span>Edit Profile</span>
           <PencilIcon />
@@ -40,13 +41,18 @@ export default function Home() {
           <span>Settings</span>
           <GearIcon />
         </div>
-        <div className='flex items-center w-full h-fit py-4 border-t border-neutral-300 justify-between'>
+        {/* <div className='flex items-center w-full h-fit py-4 border-t border-neutral-300 justify-between'>
           <span>What Works</span>
           <LightbulbIcon />
-        </div>
+        </div> */}
         <div className='flex items-center w-full h-fit py-4 border-t border-neutral-300 justify-between'>
           <span>Help</span>
           <QuestionIcon />
+        </div>
+        <div className='flex items-center w-full h-fit py-4 border-t border-neutral-300 justify-between'>
+          <Link href='/'>
+            <span>Log Out</span>
+          </Link>
         </div>
       </div>
     </div>
