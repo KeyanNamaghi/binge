@@ -84,7 +84,7 @@ export const Chat = ({ conversation, id, profilePicture }) => {
     <>
       <div className='flex flex-auto flex-col-reverse overflow-auto px-2'>
         <div>
-          {chat.map(({ role, content }, index) => {
+          {chat?.map(({ role, content }, index) => {
             const key = `${index}:${content}`
             return role === 'user' ? (
               <UserMessage key={key} message={content} />

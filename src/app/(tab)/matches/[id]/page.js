@@ -3,6 +3,7 @@ import { IconArrowBackOutline } from '@/components/Icons'
 import { matches } from '@/data/matches'
 import { Chat } from '@/components/Chat'
 import { headers } from 'next/headers'
+import { redirect } from 'next/navigation'
 
 const getConversation = async (id) => {
   try {
@@ -10,17 +11,21 @@ const getConversation = async (id) => {
     const pathname = heads.get('host')
     const protocol = pathname.includes('localhost') ? 'http' : 'https'
 
-    console.log({ pathname, protocol })
-    const req = await fetch(`${protocol}://${pathname}/api/chat/${id}`)
+    const req = await fetch(`${protocol}://${pathname}/api/chat/${id}`, {
+      headers: { cookie: heads.get('cookie') },
+    })
     return await req.json()
   } catch (e) {
     console.log(e)
-    return []
+    return { conversation: [], error: e }
   }
 }
 
 export default async function Home({ params }) {
-  const { conversation } = await getConversation(params.id)
+  const { conversation, error } = await getConversation(params.id)
+  if (error) {
+    redirect('/login')
+  }
   const match = matches.find(({ id }) => id === params.id)
   const name = match?.name || 'Unknown'
   const profilePicture = match?.profile || '1'

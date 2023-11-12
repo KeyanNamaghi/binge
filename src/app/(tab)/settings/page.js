@@ -50,7 +50,7 @@ export default function Home() {
           <QuestionIcon />
         </div>
         <div className='flex h-fit w-full items-center justify-between border-t border-neutral-300 py-4'>
-          <Link href='/'>
+          <Link href='/login'>
             <span>Log Out</span>
           </Link>
         </div>
