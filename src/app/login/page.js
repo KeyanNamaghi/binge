@@ -1,11 +1,8 @@
 'use client'
 import Link from 'next/link'
 import { usernameCookie } from '@/lib/constants'
-import { getCookie } from '@/lib/getCookie'
 
 export default function Home() {
-  const username = getCookie(usernameCookie)
-
   return (
     <div className='relative flex h-[100dvh] w-[100vw] flex-col overflow-hidden bg-white text-left md:h-full md:w-full md:rounded-lg'>
       <div className=' mx-8 mt-32'>
@@ -31,7 +28,7 @@ export default function Home() {
         />
         <p className='w-full text-xs text-neutral-500'>Last name is unwanted, why give that personal detail to us?</p>
       </div>
-      <Link className='btn mx-4 mt-4 text-base text-white' href={username ? '/standouts' : {}}>
+      <Link className='btn mx-4 mt-4 text-base text-white' href='/standouts'>
         Create Account
       </Link>
     </div>

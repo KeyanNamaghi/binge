@@ -1,21 +1,9 @@
 'use client'
+import { debounce } from '@/lib/debounce'
 import { matches } from '@/data/matches'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
-
-function debounce(func, timeout = 20) {
-  let timer
-  return (...args) => {
-    if (!timer) {
-      func.apply(this, args)
-    }
-    clearTimeout(timer)
-    timer = setTimeout(() => {
-      timer = undefined
-    }, timeout)
-  }
-}
 
 const ChatPanel = ({ name, message, icon, id }) => {
   return (
@@ -30,7 +18,11 @@ const ChatPanel = ({ name, message, icon, id }) => {
         />
         <div className='flex flex-auto flex-col overflow-auto pl-4'>
           <h2 className='font-bold'>{name}</h2>
-          <p className='truncate text-xs'>{message}</p>
+          {!!message ? (
+            <p className='truncate text-xs'>{message}</p>
+          ) : (
+            <p className='truncate text-xs text-gray-500'>Start the chat with {name}</p>
+          )}
         </div>
       </div>
     </Link>

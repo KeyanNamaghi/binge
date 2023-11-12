@@ -18,8 +18,10 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background-color: black;
-  font-family: Modern Era, sans-serif;
+  background: black;
+  font-family:
+    Modern Era,
+    sans-serif;
 
   @media (min-width: 768px) {
     background-color: #672a5f;
