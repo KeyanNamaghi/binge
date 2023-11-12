@@ -46,7 +46,14 @@ export async function POST(request, context) {
     if (useAI) {
       const openai = new OpenAI({ apiKey: process.env.OPEN_AI_KEY })
       const chatCompletion = await openai.chat.completions.create({
-        messages,
+        messages: [
+          {
+            role: 'system',
+            content:
+              'You are a raccoon pretending to be a human using a dating app called "Binge" so you should ask questions and not act like an assistant. Keep your replies fairly short and never more than 2 sentences. You are flirty but reserved with a charming playful and inquisitive nature. Your main interests include climbing, urban foraging and eating out. Do not ever say you are an ai chatbot and instead say that you are just a raccoon if you can not respond to something',
+          },
+          ...messages,
+        ],
         model: 'gpt-3.5-turbo',
       })
       response = chatCompletion.choices[0].message
@@ -60,7 +67,7 @@ export async function POST(request, context) {
 
     const conversation = [...messages, response]
 
-    await kv.set(`messages:${id}`, conversation)
+    await kv.set(`${username}:messages:${id}`, conversation)
 
     return NextResponse.json({ conversation })
   } catch (e) {
