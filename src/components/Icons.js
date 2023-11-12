@@ -167,3 +167,112 @@ export function IconArrowBackOutline(props) {
     </svg>
   )
 }
+
+export function IconCake(props) {
+  return (
+    <svg
+      fill='none'
+      stroke='currentColor'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth={2}
+      viewBox='0 0 24 24'
+      height='1em'
+      width='1em'
+      {...props}>
+      <path stroke='none' d='M0 0h24v24H0z' />
+      <path d='M3 20h18v-8a3 3 0 00-3-3H6a3 3 0 00-3 3v8z' />
+      <path d='M2.996 14.803c.312.135.654.204 1.004.197a2.4 2.4 0 002-1 2.4 2.4 0 012-1 2.4 2.4 0 012 1 2.4 2.4 0 002 1 2.4 2.4 0 002-1 2.4 2.4 0 012-1 2.4 2.4 0 012 1 2.4 2.4 0 002 1c.35.007.692-.062 1.004-.197M12 4l1.465 1.638a2 2 0 11-3.015.099L12 4z' />
+    </svg>
+  )
+}
+
+export function IconRuler(props) {
+  return (
+    <svg
+      fill='none'
+      stroke='currentColor'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth={2}
+      viewBox='0 0 24 24'
+      height='1em'
+      width='1em'
+      {...props}>
+      <path d='M21.3 15.3a2.4 2.4 0 010 3.4l-2.6 2.6a2.4 2.4 0 01-3.4 0L2.7 8.7a2.41 2.41 0 010-3.4l2.6-2.6a2.41 2.41 0 013.4 0zM14.5 12.5l2-2M11.5 9.5l2-2M8.5 6.5l2-2M17.5 15.5l2-2' />
+    </svg>
+  )
+}
+
+export function IconSuitcase(props) {
+  return (
+    <svg viewBox='0 0 24 24' fill='currentColor' height='1em' width='1em' {...props}>
+      <path d='M19 6h-3V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v1H5a3 3 0 00-3 3v9a3 3 0 003 3h14a3 3 0 003-3V9a3 3 0 00-3-3zm-9-1h4v1h-4zm10 13a1 1 0 01-1 1H5a1 1 0 01-1-1v-5h4v1a1 1 0 002 0v-1h4v1a1 1 0 002 0v-1h4zm0-7H4V9a1 1 0 011-1h14a1 1 0 011 1z' />
+    </svg>
+  )
+}
+
+export function IconGlobe(props) {
+  return (
+    <svg viewBox='0 0 24 24' fill='currentColor' height='1em' width='1em' {...props}>
+      <path fill='none' d='M0 0h24v24H0z' />
+      <path d='M13 21h5v2H6v-2h5v-1.05a10.002 10.002 0 01-7.684-4.988l1.737-.992A8 8 0 1015.97 3.053l.992-1.737A9.996 9.996 0 0122 10c0 5.185-3.947 9.449-9 9.95V21zm-1-4a7 7 0 110-14 7 7 0 010 14zm0-2a5 5 0 100-10 5 5 0 000 10z' />
+    </svg>
+  )
+}
+
+export function IconBookOpen(props) {
+  return (
+    <svg viewBox='0 0 24 24' fill='currentColor' height='1em' width='1em' {...props}>
+      <path d='M21 3h-7a2.98 2.98 0 00-2 .78A2.98 2.98 0 0010 3H3a1 1 0 00-1 1v15a1 1 0 001 1h5.758c.526 0 1.042.214 1.414.586l1.121 1.121c.009.009.021.012.03.021.086.079.182.149.294.196h.002a.996.996 0 00.762 0h.002c.112-.047.208-.117.294-.196.009-.009.021-.012.03-.021l1.121-1.121A2.015 2.015 0 0115.242 20H21a1 1 0 001-1V4a1 1 0 00-1-1zM8.758 18H4V5h6c.552 0 1 .449 1 1v12.689A4.032 4.032 0 008.758 18zM20 18h-4.758c-.799 0-1.584.246-2.242.689V6c0-.551.448-1 1-1h6v13z' />
+    </svg>
+  )
+}
+
+export function IconPerson(props) {
+  return (
+    <svg viewBox='0 0 24 24' fill='currentColor' height='1em' width='1em' {...props}>
+      <path
+        fillRule='evenodd'
+        stroke='black'
+        strokeWidth='0.5'
+        d='M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z'
+      />
+    </svg>
+  )
+}
+
+export function IconBuilding(props) {
+  return (
+    <svg
+      fill='none'
+      stroke='currentColor'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth={2}
+      viewBox='0 0 24 24'
+      height='1em'
+      width='1em'
+      {...props}>
+      <path stroke='none' d='M0 0h24v24H0z' />
+      <path d='M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3' />
+    </svg>
+  )
+}
+
+export function IconLanguages(props) {
+  return (
+    <svg
+      fill='none'
+      stroke='currentColor'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth={2}
+      viewBox='0 0 24 24'
+      height='1em'
+      width='1em'
+      {...props}>
+      <path d='M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6' />
+    </svg>
+  )
+}

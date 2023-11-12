@@ -2,7 +2,7 @@ const prettierconfig = {
   arrowParens: 'always',
   bracketSpacing: true,
   bracketSameLine: true,
-  printWidth: 120,
+  printWidth: 200,
   proseWrap: 'preserve',
   requirePragma: false,
   semi: false,
