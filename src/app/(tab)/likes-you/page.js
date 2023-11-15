@@ -8,12 +8,10 @@ export default function Home() {
     <div className='no-scrollbar absolute flex h-full w-full flex-col items-center overflow-scroll px-3 py-4'>
       <div className='mb-8 mt-4 flex w-full items-center justify-between'>
         <h1 className='ml-2 text-center text-2xl font-bold text-slate-900'>Likes You</h1>
-        <button className='rounded-full bg-primary px-4 py-2 font-bold hover:bg-primaryDark hover:text-white'>
-          Boost
-        </button>
+        <button className='rounded-full bg-primary px-4 py-2 font-bold hover:bg-primaryDark hover:text-white'>Boost</button>
       </div>
 
-      <ImageCard image='blep' heading='Juniper' />
+      <ImageCard image='blep.jpeg' heading='Juniper' />
 
       <div className='flex w-full flex-col px-4 pb-4 pt-8'>
         <p className='text-base font-bold'>Up next</p>
@@ -22,23 +20,11 @@ export default function Home() {
       <div className='grid grid-cols-2 gap-2'>
         <div className='flex w-full flex-col justify-between rounded-lg bg-white shadow-lg '>
           <span className='p-4 font-bold'>Malcom</span>
-          <Image
-            height={256}
-            width={256}
-            alt={image}
-            src={`/say-cheese.jpeg`}
-            className='rounded-box w-full rounded-b-lg blur-md'
-          />
+          <Image height={256} width={256} alt={image} src={`/say-cheese.jpeg`} className='rounded-box w-full rounded-b-lg blur-md' />
         </div>
         <div className='flex w-full flex-col justify-between rounded-lg bg-white shadow-lg '>
           <span className='p-4 font-bold'>Francis</span>
-          <Image
-            height={256}
-            width={256}
-            alt={image}
-            src={`/lazy.jpeg`}
-            className='rounded-box w-full rounded-b-lg blur-md'
-          />
+          <Image height={256} width={256} alt={image} src={`/lazy.jpeg`} className='rounded-box w-full rounded-b-lg blur-md' />
         </div>
       </div>
     </div>

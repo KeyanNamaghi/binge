@@ -30,7 +30,7 @@ export default function Matches() {
         </div>
       </div>
 
-      <div className='flex h-full w-full flex-col overflow-scroll p-2 px-4' onScroll={debounce((e) => setScroll(e.target.scrollTop))}>
+      <div className='no-scrollbar flex h-full w-full flex-col  overflow-scroll p-2 px-4' onScroll={debounce((e) => setScroll(e.target.scrollTop))}>
         {matches.map(({ lastMessage, name, id }, index) => (
           <ChatPanel key={id} name={name} message={lastMessage} icon={index} id={id} />
         ))}
