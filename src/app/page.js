@@ -8,7 +8,7 @@ import { usernameCookie } from '@/lib/constants'
 export default function Home() {
   const router = useRouter()
   const username = getCookie(usernameCookie)
-  const loginHref = username ? '/standouts' : '/login'
+  const loginHref = username ? '/home' : '/login'
 
   useEffect(() => {
     router.prefetch('/home')
@@ -48,8 +48,8 @@ export default function Home() {
       </div>
       <div className='absolute bottom-2 z-20 mt-32 flex flex-col items-center justify-between p-6 text-center	text-xs text-white'>
         <p>
-          By tapping Log in, you agree to our <strong>Terms of Service</strong>. Learn how we collect, abuse and
-          profiteer using your data in our <strong>Data Policy</strong> and <strong>Cookies Policy</strong>.
+          By tapping Log in, you agree to our <strong>Terms of Service</strong>. Learn how we collect, abuse and profiteer using your data in our <strong>Data Policy</strong> and{' '}
+          <strong>Cookies Policy</strong>.
         </p>
         <Link className='btn mt-4 w-full text-base' href={loginHref}>
           Log in
