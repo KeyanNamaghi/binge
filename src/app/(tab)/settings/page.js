@@ -1,24 +1,17 @@
 import Link from 'next/link'
-import {
-  GearIcon,
-  LightbulbIcon,
-  MicrophoneIcon,
-  PencilIcon,
-  QuestionIcon,
-  SettingsIcon,
-  SlidersIcon,
-} from '@/components/Icons'
+import Image from 'next/image'
+import { GearIcon, MicrophoneIcon, PencilIcon, QuestionIcon, SlidersIcon } from '@/components/Icons'
 
 export default function Home() {
   return (
     <div className='absolute flex h-full w-full flex-col items-center justify-center overflow-scroll rounded-lg px-4 pt-4 '>
-      <div className='my-6 flex w-full items-center gap-4'>
-        <SettingsIcon height={40} className='shrink-0' />
+      <a href='https://www.keyan.dev/me' target='_blank' className='my-6 flex w-full items-center gap-4'>
+        <Image src='/me.png' alt='My profile' className='h-12 w-12 rounded-full' height={32} width={32} priority />
         <div className='flex flex-col'>
-          <h1 className='text-xl font-bold text-slate-900'>Petteri</h1>
-          <p className='text-xs'>Binge member</p>
+          <h1 className='text-xl font-bold text-slate-900'>Keyan</h1>
+          <p className='text-xs'>Binge creator</p>
         </div>
-      </div>
+      </a>
       <div className='rounded-xl bg-primaryLight p-6 text-center text-sm'>
         <div className='m-auto mb-4 w-fit rounded-full bg-primary p-2'>
           <MicrophoneIcon />
@@ -29,10 +22,10 @@ export default function Home() {
       </div>
 
       <div className='flex h-full w-full flex-col pt-4 text-sm'>
-        <div className='flex h-fit w-full items-center justify-between border-t border-neutral-300 py-4'>
-          <span>Edit Profile</span>
+        <a href='https://github.com/KeyanNamaghi/binge' target='_blank' className='flex h-fit w-full items-center justify-between border-t border-neutral-300 py-4'>
+          <span>Github</span>
           <PencilIcon />
-        </div>
+        </a>
         <div className='flex h-fit w-full items-center justify-between border-t border-neutral-300 py-4'>
           <span>Preferences</span>
           <SlidersIcon />
@@ -45,10 +38,13 @@ export default function Home() {
           <span>What Works</span>
           <LightbulbIcon />
         </div> */}
-        <div className='flex h-fit w-full items-center justify-between border-t border-neutral-300 py-4'>
+        <a
+          href='https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnQzdHJoeHZvMDlzcDd0djVtMHB0dmpkc29xMG1uY2c5d3ptNDNrMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0G16JfAv3SY6iKNq/giphy.gif'
+          target='_blank'
+          className='flex h-fit w-full items-center justify-between border-t border-neutral-300 py-4'>
           <span>Help</span>
           <QuestionIcon />
-        </div>
+        </a>
         <div className='flex h-fit w-full items-center justify-between border-t border-neutral-300 py-4'>
           <Link href='/login'>
             <span>Log Out</span>

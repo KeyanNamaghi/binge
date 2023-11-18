@@ -1,15 +1,15 @@
 'use client'
 import { debounce } from '@/lib/debounce'
-import { matches } from '@/data/matches'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { MATCHES_STORAGE_KEY } from '@/lib/constants'
 
 const ChatPanel = ({ name, message, icon, id }) => {
   return (
-    <Link href={`matches/${id}`}>
+    <Link href={`matches/${id}/${name}`}>
       <div className='flex h-fit w-full items-center justify-center border-t py-4'>
-        <Image height={50} width={50} alt={name} src={`/profile/${icon + 1}.png`} className='rounded-box rounded-full' />
+        <Image height={50} width={50} alt={name} src={`/${icon}`} className='rounded-box aspect-square rounded-full object-cover' />
         <div className='flex flex-auto flex-col overflow-auto pl-4'>
           <h2 className='font-bold'>{name}</h2>
           {!!message ? <p className='truncate text-xs'>{message}</p> : <p className='truncate text-xs text-gray-500'>Start the chat with {name}</p>}
@@ -21,6 +21,19 @@ const ChatPanel = ({ name, message, icon, id }) => {
 
 export default function Matches() {
   const [scroll, setScroll] = useState(0)
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    const test = JSON.parse(localStorage.getItem(MATCHES_STORAGE_KEY)) || {}
+    console.log(test)
+
+    const data =
+      Object.entries(test).map(([id, details]) => {
+        return { id, ...details }
+      }) || []
+
+    setData(data)
+  }, [])
 
   return (
     <div className='absolute flex h-full w-full flex-col items-center justify-center rounded-lg'>
@@ -30,9 +43,9 @@ export default function Matches() {
         </div>
       </div>
 
-      <div className='no-scrollbar flex h-full w-full flex-col  overflow-scroll p-2 px-4' onScroll={debounce((e) => setScroll(e.target.scrollTop))}>
-        {matches.map(({ lastMessage, name, id }, index) => (
-          <ChatPanel key={id} name={name} message={lastMessage} icon={index} id={id} />
+      <div className='no-scrollbar flex h-full w-full flex-col overflow-scroll p-2 px-4' onScroll={debounce((e) => setScroll(e.target.scrollTop))}>
+        {data.map(({ id, details, images }) => (
+          <ChatPanel key={id} name={details.name} icon={images[0].image} id={id} />
         ))}
       </div>
     </div>

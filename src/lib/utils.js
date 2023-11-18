@@ -7,3 +7,7 @@ export function getRandomValuesFromArray(array, n) {
   const shuffledArray = array.slice().sort(() => Math.random() - 0.5)
   return shuffledArray.slice(0, n)
 }
+
+export function canUseDOM() {
+  return !!(typeof window !== 'undefined' && window.document && window.document.createElement)
+}

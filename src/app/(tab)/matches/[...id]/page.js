@@ -2,32 +2,11 @@ import Link from 'next/link'
 import { IconArrowBackOutline } from '@/components/Icons'
 import { matches } from '@/data/matches'
 import { Chat } from '@/components/Chat'
-import { headers } from 'next/headers'
-import { redirect } from 'next/navigation'
-
-const getConversation = async (id) => {
-  try {
-    const heads = headers()
-    const pathname = heads.get('host')
-    const protocol = pathname.includes('localhost') ? 'http' : 'https'
-
-    const req = await fetch(`${protocol}://${pathname}/api/chat/${id}`, {
-      headers: { cookie: heads.get('cookie') },
-    })
-    return await req.json()
-  } catch (e) {
-    console.log(e)
-    return { conversation: [], error: e }
-  }
-}
 
 export default async function Home({ params }) {
-  const { conversation, error } = await getConversation(params.id)
-  if (error) {
-    redirect('/login')
-  }
+  console.log({ params })
   const match = matches.find(({ id }) => id === params.id)
-  const name = match?.name || 'Unknown'
+  const name = params.id[1] || 'Unknown'
   const profilePicture = match?.profile || '1'
 
   return (
@@ -41,7 +20,7 @@ export default async function Home({ params }) {
             </div>
           </Link>
         </div>
-        <Chat conversation={conversation} id={params.id} profilePicture={profilePicture} />
+        <Chat id={params.id[0]} profilePicture={profilePicture} />
       </div>
     </div>
   )

@@ -31,9 +31,9 @@ export const StandoutsIcon = () => {
   )
 }
 
-export const LikesYouIcon = () => {
+export const LikesYouIcon = ({ background = '#171717', className }) => {
   return (
-    <svg viewBox='253.7667 151.1909 91.7508 87.1604' height='20'>
+    <svg viewBox='253.7667 151.1909 91.7508 87.1604' height='20' className={className}>
       <g transform='matrix(0.1890600174665451, 0, 0, 0.20374099910259247, 253.7667236328125, 145.3332977294922)'>
         <g>
           <g>
@@ -44,7 +44,7 @@ export const LikesYouIcon = () => {
       <g transform='matrix(1, 0, 0, 1, 5.960501194000244, -22.713226318359375)'>
         <path
           strokeWidth='0'
-          fill='#171717'
+          fill={background}
           d='M 292.332 250.292 C 290.826 248.471 304.86 235.407 306.848 236.164 C 308.802 236.908 308.638 237.658 310.083 239.19 C 311.581 240.777 312.575 241.03 313.266 243.241 C 313.983 245.535 301.43 258.661 299.762 257.628 C 298.044 256.564 299.385 258.49 295.279 254.165 C 292.902 251.661 294.815 253.294 292.332 250.292 Z'
         />
       </g>
@@ -54,14 +54,7 @@ export const LikesYouIcon = () => {
 
 export const MatchesIcon = () => {
   return (
-    <svg
-      viewBox='370 131 28 28'
-      height='20'
-      strokeWidth={2}
-      fill='none'
-      strokeLinejoin='round'
-      strokeLinecap='round'
-      strokeMiterlimit={10}>
+    <svg viewBox='370 131 28 28' height='20' strokeWidth={2} fill='none' strokeLinejoin='round' strokeLinecap='round' strokeMiterlimit={10}>
       <path d='M 379.355 132.952 C 374.955 132.952 371.355 136.552 371.355 140.952 L 371.355 152.952 L 371.355 157.952 C 375.055 154.752 379.755 152.952 384.655 152.952 L 389.355 152.952 C 393.755 152.952 397.355 149.352 397.355 144.952 L 397.355 140.952 C 397.355 136.552 393.755 132.952 389.355 132.952 L 379.355 132.952 Z' />
     </svg>
   )
@@ -91,16 +84,7 @@ export const MicrophoneIcon = ({ height = 30 }) => {
 // How did I forget about https://reactsvgicons.com/ ?
 export const PencilIcon = (props) => {
   return (
-    <svg
-      fill='none'
-      stroke='currentColor'
-      strokeLinecap='round'
-      strokeLinejoin='round'
-      strokeWidth={2}
-      viewBox='0 0 24 24'
-      height='1.5em'
-      width='1.5em'
-      {...props}>
+    <svg fill='none' stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} viewBox='0 0 24 24' height='1.5em' width='1.5em' {...props}>
       <path d='M17 3a2.85 2.83 0 114 4L7.5 20.5 2 22l1.5-5.5zM15 5l4 4' />
     </svg>
   )
@@ -130,16 +114,7 @@ export function GearIcon(props) {
 
 export function LightbulbIcon(props) {
   return (
-    <svg
-      fill='none'
-      stroke='currentColor'
-      strokeLinecap='round'
-      strokeLinejoin='round'
-      strokeWidth={2}
-      viewBox='0 0 24 24'
-      height='1.5em'
-      width='1.5em'
-      {...props}>
+    <svg fill='none' stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} viewBox='0 0 24 24' height='1.5em' width='1.5em' {...props}>
       <path d='M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 006 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5M9 18h6M10 22h4' />
     </svg>
   )
@@ -156,30 +131,14 @@ export function QuestionIcon(props) {
 export function IconArrowBackOutline(props) {
   return (
     <svg viewBox='0 0 512 512' fill='currentColor' height='1em' width='1em' {...props}>
-      <path
-        fill='none'
-        stroke='currentColor'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-        strokeWidth={48}
-        d='M244 400L100 256l144-144M120 256h292'
-      />
+      <path fill='none' stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth={48} d='M244 400L100 256l144-144M120 256h292' />
     </svg>
   )
 }
 
 export function IconCake(props) {
   return (
-    <svg
-      fill='none'
-      stroke='currentColor'
-      strokeLinecap='round'
-      strokeLinejoin='round'
-      strokeWidth={2}
-      viewBox='0 0 24 24'
-      height='1em'
-      width='1em'
-      {...props}>
+    <svg fill='none' stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} viewBox='0 0 24 24' height='1em' width='1em' {...props}>
       <path stroke='none' d='M0 0h24v24H0z' />
       <path d='M3 20h18v-8a3 3 0 00-3-3H6a3 3 0 00-3 3v8z' />
       <path d='M2.996 14.803c.312.135.654.204 1.004.197a2.4 2.4 0 002-1 2.4 2.4 0 012-1 2.4 2.4 0 012 1 2.4 2.4 0 002 1 2.4 2.4 0 002-1 2.4 2.4 0 012-1 2.4 2.4 0 012 1 2.4 2.4 0 002 1c.35.007.692-.062 1.004-.197M12 4l1.465 1.638a2 2 0 11-3.015.099L12 4z' />
@@ -189,16 +148,7 @@ export function IconCake(props) {
 
 export function IconRuler(props) {
   return (
-    <svg
-      fill='none'
-      stroke='currentColor'
-      strokeLinecap='round'
-      strokeLinejoin='round'
-      strokeWidth={2}
-      viewBox='0 0 24 24'
-      height='1em'
-      width='1em'
-      {...props}>
+    <svg fill='none' stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} viewBox='0 0 24 24' height='1em' width='1em' {...props}>
       <path d='M21.3 15.3a2.4 2.4 0 010 3.4l-2.6 2.6a2.4 2.4 0 01-3.4 0L2.7 8.7a2.41 2.41 0 010-3.4l2.6-2.6a2.41 2.41 0 013.4 0zM14.5 12.5l2-2M11.5 9.5l2-2M8.5 6.5l2-2M17.5 15.5l2-2' />
     </svg>
   )
@@ -244,16 +194,7 @@ export function IconPerson(props) {
 
 export function IconBuilding(props) {
   return (
-    <svg
-      fill='none'
-      stroke='currentColor'
-      strokeLinecap='round'
-      strokeLinejoin='round'
-      strokeWidth={2}
-      viewBox='0 0 24 24'
-      height='1em'
-      width='1em'
-      {...props}>
+    <svg fill='none' stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} viewBox='0 0 24 24' height='1em' width='1em' {...props}>
       <path stroke='none' d='M0 0h24v24H0z' />
       <path d='M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3' />
     </svg>
@@ -262,16 +203,7 @@ export function IconBuilding(props) {
 
 export function IconLanguages(props) {
   return (
-    <svg
-      fill='none'
-      stroke='currentColor'
-      strokeLinecap='round'
-      strokeLinejoin='round'
-      strokeWidth={2}
-      viewBox='0 0 24 24'
-      height='1em'
-      width='1em'
-      {...props}>
+    <svg fill='none' stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} viewBox='0 0 24 24' height='1em' width='1em' {...props}>
       <path d='M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6' />
     </svg>
   )

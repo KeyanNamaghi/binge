@@ -1,6 +1,8 @@
 import { getRandomFromList } from '@/lib/utils'
 import { getRandomName } from './names'
 import { getRandomRaccoonJob } from './jobs'
+import { getRandomPrompts } from './prompts'
+import { getPictures } from './pictures'
 
 export const getRandomHeight = () => {
   // Raccoons measure 16-28 inches in length, not including their 10-inch tail
@@ -14,19 +16,7 @@ export const getRandomAge = () => {
 }
 
 export const getRandomReligion = () => {
-  const religions = [
-    'Christian',
-    'Muslim',
-    'Buddhist',
-    'Hindu',
-    'Jewish',
-    'Sikh',
-    'Spiritual',
-    'Atheist',
-    'Agnostic',
-    'Other',
-    'Prefer not to say',
-  ]
+  const religions = ['Christian', 'Muslim', 'Buddhist', 'Hindu', 'Jewish', 'Sikh', 'Spiritual', 'Atheist', 'Agnostic', 'Other', 'Prefer not to say']
   return getRandomFromList(religions)
 }
 
@@ -67,4 +57,11 @@ export const buildRandomDetails = () => {
     religion: getRandomReligion(),
     job: getRandomRaccoonJob(),
   }
+}
+
+export const buildRandomProfile = () => {
+  const details = buildRandomDetails()
+  const prompts = getRandomPrompts(3)
+  const images = getPictures(3)
+  return { details, prompts, images }
 }
