@@ -1,8 +1,13 @@
 import { ImageCard } from '@/components/ImageCard'
+import { getPictures } from '@/data/pictures'
+import { createName } from '@/data/profile'
 import Image from 'next/image'
+import Link from 'next/link'
 
-export default function Home() {
-  const image = 'blep'
+export default async function Home() {
+  const id = crypto.randomUUID()
+  const [{ image }] = getPictures(1)
+  const name = createName()
 
   return (
     <div className='no-scrollbar absolute flex h-full w-full flex-col items-center overflow-scroll px-3 py-4'>
@@ -11,7 +16,9 @@ export default function Home() {
         <button className='rounded-full bg-primary px-4 py-2 font-bold hover:bg-primaryDark hover:text-white'>Boost</button>
       </div>
 
-      <ImageCard image='blep.jpeg' heading='Juniper' />
+      {/* <Link href={`/likes-you/${id}`}> */}
+      <ImageCard image={image} heading={name} />
+      {/* </Link> */}
 
       <div className='flex w-full flex-col px-4 pb-4 pt-8'>
         <p className='text-base font-bold'>Up next</p>

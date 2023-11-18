@@ -43,13 +43,15 @@ export const getRandomPolitics = () => {
   return getRandomFromList(politics)
 }
 
+export const createName = () => getRandomName(getRandomGender())
+
 export const getRandomGender = () => (Math.random() > 0.5 ? 'Male' : 'Female')
 
 export const buildRandomDetails = () => {
   const gender = getRandomGender()
   return {
-    gender,
     name: getRandomName(gender),
+    gender,
     height: getRandomHeight(),
     age: getRandomAge(),
     ethnicity: getRandomEthnicity(),
@@ -63,5 +65,7 @@ export const buildRandomProfile = () => {
   const details = buildRandomDetails()
   const prompts = getRandomPrompts(3)
   const images = getPictures(3)
-  return { details, prompts, images }
+  const id = crypto.randomUUID()
+
+  return { details, prompts, images, id }
 }

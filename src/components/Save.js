@@ -7,15 +7,14 @@ export const Save = () => {
   const { data, regenerateData } = useProfile()
 
   const onClick = () => {
-    const id = crypto.randomUUID()
     const matches = localStorage.getItem(MATCHES_STORAGE_KEY)
     const newMatches = JSON.parse(matches) || {}
-    newMatches[id] = data
+    newMatches[data.id] = data
     localStorage.setItem(MATCHES_STORAGE_KEY, JSON.stringify(newMatches))
 
     regenerateData()
     // This is just so much easier than using a ref
-    document.getElementById('home-page').scrollTo(0, 0)
+    document?.getElementById('home-page')?.scrollTo(0, 0)
   }
 
   return (
