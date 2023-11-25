@@ -7,7 +7,7 @@ export default function Home({ params }) {
   const data = decodeProfile(params.id)
 
   return (
-    <>
+    <div className='no-scrollbar absolute flex h-full w-full flex-col items-center gap-6 overflow-scroll px-3 pb-8' id='home-page'>
       <div className='w-full px-4'>
         <h1 className='mt-8 text-2xl font-bold text-slate-900'>{data?.details?.name}</h1>
         <span className='text-xs text-neutral-900'>&ldquo;Active&rdquo; now</span>
@@ -23,6 +23,6 @@ export default function Home({ params }) {
           <ImageCard {...data.images[2]} hasSave />
         </>
       )}
-    </>
+    </div>
   )
 }
