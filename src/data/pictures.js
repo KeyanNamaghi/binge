@@ -8,6 +8,21 @@ export const getPictures = (n) => {
   }))
 }
 
+export const getRandomPictureIds = (n) => {
+  const captions = getRandomValuesFromArray(photoPrompts, n).map((caption) => photoPrompts.findIndex((prompt) => caption === prompt))
+
+  return getRandomValuesFromArray(pictures, n).map((picture, index) => {
+    const pictureIndex = pictures.findIndex((val) => val === picture)
+    const captionIndex = Math.random() > 0.5 ? captions[index] : 0
+
+    return [pictureIndex, captionIndex]
+  })
+}
+
+export const getPictureById = ([pictureId, captionId]) => {
+  return { image: pictures[pictureId], caption: photoPrompts[captionId] }
+}
+
 const pictures = [
   'blep.jpeg',
   'comfy.jpeg',
@@ -54,6 +69,7 @@ const pictures = [
 ]
 
 const photoPrompts = [
+  '',
   'Caught in the act',
   'My favorite mischief',
   'The face I make when plotting a heist',

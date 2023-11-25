@@ -11,7 +11,7 @@ export const HomeIcon = () => {
 
 export const StandoutsIcon = () => {
   return (
-    <svg viewBox='53.1133 167.4114 91.6711 86.828' width='91.6711' height='20'>
+    <svg viewBox='53.1133 167.4114 91.6711 86.828' width='20' height='20'>
       <g transform='matrix(1.018555998802185, 0, 0, 1.0069350004196167, 53.113226251258396, 165.5123672683669)'>
         <g>
           <path

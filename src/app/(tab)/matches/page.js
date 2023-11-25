@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { MATCHES_STORAGE_KEY } from '@/lib/constants'
+import { decodeProfile } from '@/data/profile'
 
 const ChatPanel = ({ name, message, icon, id }) => {
   return (
@@ -24,14 +25,8 @@ export default function Matches() {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    const test = JSON.parse(localStorage.getItem(MATCHES_STORAGE_KEY)) || {}
-    console.log(test)
-
-    const data =
-      Object.entries(test).map(([id, details]) => {
-        return { id, ...details }
-      }) || []
-
+    const saved = JSON.parse(localStorage.getItem(MATCHES_STORAGE_KEY)) || []
+    const data = ['M1i17300-21w150-7000ww', ...saved].map(decodeProfile)
     setData(data)
   }, [])
 

@@ -4,7 +4,6 @@ import { matches } from '@/data/matches'
 import { Chat } from '@/components/Chat'
 
 export default async function Home({ params }) {
-  console.log({ params })
   const match = matches.find(({ id }) => id === params.id)
   const name = params.id[1] || 'Unknown'
   const profilePicture = match?.profile || '1'
@@ -13,7 +12,7 @@ export default async function Home({ params }) {
     <div className='absolute flex h-full w-full flex-col items-center rounded-lg'>
       <div className='flex h-full w-full flex-col'>
         <div className='mt-4 flex w-full items-center border-b p-4'>
-          <Link href='/matches' className=''>
+          <Link href='/matches' prefetch={false}>
             <div className='flex w-full items-center'>
               <IconArrowBackOutline />
               <h1 className='ml-2 font-bold'>{name}</h1>

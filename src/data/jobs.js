@@ -1,10 +1,12 @@
-import { getRandomFromList } from '@/lib/utils'
+import { getRandomFromList, getRandomIndexFromList } from '@/lib/utils'
 
 export const getRandomJob = () => getRandomFromList(jobs.concat(raccoonJobs))
 
 export const getRandomRealJob = () => getRandomFromList(jobs)
-
 export const getRandomRaccoonJob = () => getRandomFromList(raccoonJobs)
+
+export const getRandomJobId = () => getRandomIndexFromList(raccoonJobs)
+export const getJobById = (id) => raccoonJobs[id]
 
 const jobs = [
   'Marketing Manager',

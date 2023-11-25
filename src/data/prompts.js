@@ -1,9 +1,20 @@
-import { getRandomFromList, getRandomValuesFromArray } from '@/lib/utils'
+import { getRandomFromList, getRandomIndexFromList, getRandomValuesFromArray } from '@/lib/utils'
 
 export const getRandomPrompts = (n) => {
   return getRandomValuesFromArray(prompts, n).map(({ prompt, answers }) => {
     return { prompt, answer: getRandomFromList(answers) }
   })
+}
+
+export const getRandomPromptIds = (n) => {
+  return getRandomValuesFromArray(prompts, n).map(({ prompt, answers }) => {
+    return [prompts.findIndex((val) => val.prompt === prompt), getRandomIndexFromList(answers)]
+  })
+}
+
+export const getPromptById = ([promptId, answerId]) => {
+  const { prompt, answers } = prompts[promptId]
+  return { prompt, answer: answers[answerId] }
 }
 
 export const prompts = [

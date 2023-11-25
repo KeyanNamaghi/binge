@@ -1,20 +1,22 @@
 'use client'
 import { LikesYouIcon } from '@/components/Icons'
+import { buildProfile } from '@/data/profile'
 import { MATCHES_STORAGE_KEY } from '@/lib/constants'
-import { useProfile } from '@/lib/useProfile'
+import { useRouter, useParams } from 'next/navigation'
 
 export const Save = () => {
-  const { data, regenerateData } = useProfile()
+  const { id } = useParams()
+  const { replace } = useRouter()
 
   const onClick = () => {
     const matches = localStorage.getItem(MATCHES_STORAGE_KEY)
-    const newMatches = JSON.parse(matches) || {}
-    newMatches[data.id] = data
+    const newMatches = JSON.parse(matches) || []
+    newMatches.push(id)
     localStorage.setItem(MATCHES_STORAGE_KEY, JSON.stringify(newMatches))
-
-    regenerateData()
+    // regenerateData()
     // This is just so much easier than using a ref
-    document?.getElementById('home-page')?.scrollTo(0, 0)
+    replace(`/home/${buildProfile()}`, { scroll: true })
+    // document?.getElementById('home-page')?.scrollTo(0, 0)
   }
 
   return (

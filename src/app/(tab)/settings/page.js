@@ -1,6 +1,8 @@
+'use client'
 import Link from 'next/link'
 import Image from 'next/image'
 import { GearIcon, MicrophoneIcon, PencilIcon, QuestionIcon, SlidersIcon } from '@/components/Icons'
+import { MATCHES_STORAGE_KEY } from '@/lib/constants'
 
 export default function Home() {
   return (
@@ -30,10 +32,15 @@ export default function Home() {
           <span>Preferences</span>
           <SlidersIcon />
         </div>
-        <div className='flex h-fit w-full items-center justify-between border-t border-neutral-300 py-4'>
-          <span>Settings</span>
+        <button
+          onClick={() => {
+            localStorage.removeItem(MATCHES_STORAGE_KEY)
+            alert("Sorry I know this is annoying but I don't have time to make a proper reset button 😅")
+          }}
+          className='flex h-fit w-full items-center justify-between border-t border-neutral-300 py-4'>
+          <span>Reset</span>
           <GearIcon />
-        </div>
+        </button>
         {/* <div className='flex items-center w-full h-fit py-4 border-t border-neutral-300 justify-between'>
           <span>What Works</span>
           <LightbulbIcon />

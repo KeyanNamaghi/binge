@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import MatchedProfile from './MatchedProfile'
 import { MatchMessage, UserMessage } from './Messages'
 import { redirect } from 'next/navigation'
+import { debounce } from '@/lib/debounce'
 
 const sendMessage = async (message, id) => {
   try {
@@ -30,8 +31,8 @@ const getConversation = async (id) => {
 export const Chat = ({ id, profilePicture }) => {
   const [pendingMessage, setPendingMessage] = useState(null)
   const [replyPending, setReplyPending] = useState(false)
-
   const [chat, setChat] = useState([])
+  const [viewingProfile, setViewingProfile] = useState(false)
 
   useEffect(() => {
     async function fetchData() {
@@ -65,9 +66,18 @@ export const Chat = ({ id, profilePicture }) => {
     setReplyPending(false)
   }
 
+  const handleScroll = (e) => {
+    const { scrollLeft, scrollWidth } = e.target
+    setViewingProfile(scrollLeft > scrollWidth / 4)
+  }
+
   return (
     <>
-      <div className='scroll-snap-type no-scrollbar relative flex-auto'>
+      <div className='flex justify-around p-3'>
+        <h2 className={`text-center text-sm font-bold text-slate-900 ${viewingProfile ? '' : 'underline'}`}>Chat</h2>
+        <h2 className={`text-center text-sm font-bold text-slate-900 ${viewingProfile ? 'underline' : ''}`}>Profile</h2>
+      </div>
+      <div className='scroll-snap-type no-scrollbar relative flex-auto' onScroll={debounce(handleScroll, 17)}>
         <div className='scroll-snap-align flex flex-auto flex-col-reverse overflow-y-auto whitespace-normal px-2'>
           {chat?.map(({ role, content }, index) => {
             const key = `${index}:${content}`

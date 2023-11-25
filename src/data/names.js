@@ -1,6 +1,9 @@
-const { getRandomFromList } = require('@/lib/utils')
+const { getRandomFromList, getRandomIndexFromList } = require('@/lib/utils')
 
 export const getRandomName = (gender) => getRandomFromList(gender === 'Male' ? finnishBoyNames : finnishGirlNames)
+
+export const getRandomNameId = (gender) => getRandomIndexFromList(gender === 'Male' ? finnishBoyNames : finnishGirlNames)
+export const getNameById = (gender, id) => (gender === 'Male' ? finnishBoyNames[id] : finnishGirlNames[id])
 
 const finnishGirlNames = [
   'Aino',
