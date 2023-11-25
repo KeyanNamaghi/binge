@@ -132,6 +132,16 @@ strong {
   scroll-snap-align: end;
 }
 
+.chat-body {
+  overflow: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  scroll-behavior: smooth;
+  overflow-anchor: auto !important;
+  max-height: 100%;
+}
+
 @layer utilities {
   .fill-pastel-pink {
     fill: #ffc0cb;

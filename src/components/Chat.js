@@ -31,7 +31,7 @@ const getConversation = async (id) => {
 export const Chat = ({ id, profilePicture }) => {
   const [pendingMessage, setPendingMessage] = useState(null)
   const [replyPending, setReplyPending] = useState(false)
-  const [chat, setChat] = useState([])
+  const [chat, setChat] = useState()
   const [viewingProfile, setViewingProfile] = useState(false)
 
   useEffect(() => {
@@ -79,20 +79,24 @@ export const Chat = ({ id, profilePicture }) => {
       </div>
       <div className='scroll-snap-type no-scrollbar relative flex-auto' onScroll={debounce(handleScroll, 17)}>
         <div className='scroll-snap-align flex flex-auto flex-col-reverse overflow-y-auto whitespace-normal px-2'>
-          {chat?.map(({ role, content }, index) => {
-            const key = `${index}:${content}`
-            const Message = role === 'user' ? UserMessage : MatchMessage
-            return <Message key={key} message={content} profilePicture={profilePicture} />
-          })}
-          {pendingMessage && <UserMessage message={pendingMessage} />}
-          {replyPending && <MatchMessage message='...' profilePicture={profilePicture} />}
-          {chat?.length === 0 && (
-            <div className='flex h-full items-end justify-center'>
-              <div className='mx-2 my-4 rounded-lg border border-neutral-300 px-8 py-4 text-center text-sm text-slate-900'>
-                Start the conversation by responding to one of the prompts on their profile.
-              </div>
+          <div className='chat-body'>
+            <div>
+              {chat?.map(({ role, content }, index) => {
+                const key = `${index}:${content}`
+                const Message = role === 'user' ? UserMessage : MatchMessage
+                return <Message key={key} message={content} profilePicture={profilePicture} />
+              })}
+              {pendingMessage && <UserMessage message={pendingMessage} />}
+              {replyPending && <MatchMessage message='...' profilePicture={profilePicture} />}
+              {chat?.length === 0 && (
+                <div className='flex h-full items-end justify-center'>
+                  <div className='mx-2 my-4 rounded-lg border border-neutral-300 px-8 py-4 text-center text-sm text-slate-900'>
+                    Start the conversation by responding to one of the prompts on their profile.
+                  </div>
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
         <MatchedProfile id={id} />
       </div>
