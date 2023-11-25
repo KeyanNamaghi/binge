@@ -1,10 +1,13 @@
 'use client'
 import { buildProfile } from '@/data/profile'
 import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 
 export default function Home() {
-  const { replace } = useRouter()
-  replace(`/home/${buildProfile()}`)
+  const router = useRouter()
+  useEffect(() => {
+    router.replace(`/home/${buildProfile()}`)
+  }, [router])
 
   return (
     <div className='flex h-full w-full items-center justify-center rounded-lg'>
