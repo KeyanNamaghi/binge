@@ -10,7 +10,7 @@ To wipe the redis cache just use `FLUSHDB`
 
 ## Id Logic
 
-xxxxxxxx-xxxxxx-xxxxxx
+xxxxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx
 
 | gender    | hex digits | conversion                      |
 | --------- | ---------- | ------------------------------- |
@@ -26,5 +26,7 @@ xxxxxxxx-xxxxxx-xxxxxx
 | prompts   | n x 2      | 1 prompt index + 1 answer index |
 | -         | -          | -                               |
 | images    | n x 2      | 1 image index + 1 caption index |
-
-I will probably add interests/personalities into the id at some point so the chat is varied
+| -         | -          | -                               |
+| traits    | 6          | index                           |
+| -         | -          | -                               |
+| hobbies   | 6          | index                           |

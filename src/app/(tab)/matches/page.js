@@ -26,7 +26,7 @@ export default function Matches() {
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem(MATCHES_STORAGE_KEY)) || []
-    const data = ['M1i17300-21w150-7000ww', ...saved].map(decodeProfile)
+    const data = ['M1i17300-21w150-7000ww-XW3ARU-uTifvS', ...saved].map(decodeProfile)
     setData(data)
   }, [])
 

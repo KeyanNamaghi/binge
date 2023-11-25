@@ -20,3 +20,7 @@ export const convertCharToNumber = (letter) => chars.indexOf(letter)
 export const encodeArray = (array) => array.map(convertNumberToChar).join('')
 
 export const getRandomNumberBetween = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
+
+export const getRandomIdsFromList = (array, n) => {
+  return getRandomValuesFromArray(array, n).map((value) => array.findIndex((val) => val === value))
+}

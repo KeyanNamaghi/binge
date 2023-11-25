@@ -2,6 +2,7 @@ import OpenAI from 'openai'
 import { kv } from '@vercel/kv'
 import { NextResponse } from 'next/server'
 import { usernameCookie } from '@/lib/constants'
+import { templateSystemContent } from '@/data/profile'
 
 export async function GET(request, context) {
   const { id } = context.params
@@ -44,13 +45,13 @@ export async function POST(request, context) {
     let response = {}
 
     if (useAI) {
+      const content = templateSystemContent(id)
       const openai = new OpenAI({ apiKey: process.env.OPEN_AI_KEY })
       const chatCompletion = await openai.chat.completions.create({
         messages: [
           {
             role: 'system',
-            content:
-              'You are a raccoon pretending to be a human using a dating app called "Binge" so you should ask questions and not act like an assistant. Keep your replies fairly short and never more than 2 sentences. You are flirty but reserved with a charming playful and inquisitive nature. Your main interests include climbing, urban foraging and eating out. Do not ever say you are an ai chatbot and instead say that you are just a raccoon if you can not respond to something',
+            content,
           },
           ...messages,
         ],

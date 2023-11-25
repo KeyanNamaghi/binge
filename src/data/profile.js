@@ -1,8 +1,9 @@
-import { convertCharToNumber, encodeArray, getRandomFromList, getRandomIndexFromList, getRandomNumberBetween } from '@/lib/utils'
+import { convertCharToNumber, encodeArray, getRandomFromList, getRandomIdsFromList, getRandomIndexFromList, getRandomNumberBetween } from '@/lib/utils'
 import { getNameById, getRandomName, getRandomNameId } from './names'
 import { getJobById, getRandomJobId, getRandomRaccoonJob } from './jobs'
 import { getPromptById, getRandomPromptIds, getRandomPrompts } from './prompts'
 import { getPictureById, getPictures, getRandomPictureIds } from './pictures'
+import { interests, personalityTraits } from './personality'
 
 export const getRandomHeight = () => {
   // Raccoons measure 16-28 inches in length, not including their 10-inch tail
@@ -86,18 +87,26 @@ export const buildProfile = () => {
   const job = getRandomJobId()
   const prompts = getRandomPromptIds(3)
   const images = getRandomPictureIds(3)
+  const traits = getRandomIdsFromList(personalityTraits, 6)
+  const hobbies = getRandomIdsFromList(interests, 6)
+
   const encodedDetails = encodeArray([name, encodedGender, height, age, ethnicity, politics, religion, job])
-  const encodedPrompts = prompts.map((prompt) => encodeArray(prompt))
-  const encodedImages = images.map((image) => encodeArray(image))
-  return `${encodedDetails}-${encodedPrompts.join('')}-${encodedImages.join('')}`
+  const encodedPrompts = prompts.map(encodeArray).join('')
+  const encodedImages = images.map(encodeArray).join('')
+  const encodedTraits = encodeArray(traits)
+  const encodedHobbies = encodeArray(hobbies)
+
+  return `${encodedDetails}-${encodedPrompts}-${encodedImages}-${encodedTraits}-${encodedHobbies}`
 }
 
 export const decodeProfile = (profile) => {
-  const [encodedDetails, encodedPrompts, encodedImages] = profile.split('-')
+  const [encodedDetails, encodedPrompts, encodedImages, encodedTraits, encodedHobbies] = profile.split('-')
 
   const decodedDetails = encodedDetails.split('').map((char) => convertCharToNumber(char))
   const decodedPrompts = encodedPrompts.match(/.{1,2}/g).map((prompt) => prompt.split('').map((char) => convertCharToNumber(char)))
   const decodedImages = encodedImages.match(/.{1,2}/g).map((image) => image.split('').map((char) => convertCharToNumber(char)))
+  const decodedTraits = encodedTraits.split('').map((char) => convertCharToNumber(char))
+  const decodedHobbies = encodedHobbies.split('').map((char) => convertCharToNumber(char))
 
   const gender = decodedDetails[1] === 0 ? 'Male' : 'Female'
   const name = getNameById(gender, decodedDetails[0])
@@ -107,23 +116,30 @@ export const decodeProfile = (profile) => {
   const politics = politicalOptions[decodedDetails[5]]
   const religion = religions[decodedDetails[6]]
   const job = getJobById(decodedDetails[7])
-
   const prompts = decodedPrompts.map(getPromptById)
   const images = decodedImages.map(getPictureById)
+  const traits = decodedTraits.map((trait) => personalityTraits[trait])
+  const hobbies = decodedHobbies.map((hobby) => interests[hobby])
 
   return {
-    details: {
-      name,
-      gender,
-      height,
-      age,
-      ethnicity,
-      politics,
-      religion,
-      job,
-    },
+    details: { name, gender, height, age, ethnicity, politics, religion, job },
     prompts,
     images,
+    traits,
+    hobbies,
     id: profile,
   }
+}
+
+export const templateSystemContent = (id) => {
+  const {
+    details: { name, gender, ethnicity, politics, religion, job },
+    traits,
+    hobbies,
+  } = decodeProfile(id)
+
+  const readableTraits = traits?.map((trait) => trait.toLowerCase())?.join(', ')
+  const readableHobbies = hobbies?.map((hobby) => hobby.toLowerCase())?.join(', ')
+
+  return `You are a ${religion}, ${politics}, ${ethnicity}, ${gender} raccoon called ${name} pretending to be a human using a dating app called "Binge" so you should not act like an assistant. Keep your replies very short, never more than 2 sentences and you can ask questions. Your personality is ${readableTraits}. Your job is ${job.toLowerCase()} but your hobbies are ${readableHobbies}. Do not ever say you are an ai chatbot and instead say that you are just a raccoon if you can not respond to something`
 }
