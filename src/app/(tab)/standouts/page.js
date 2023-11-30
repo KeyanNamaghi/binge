@@ -1,18 +1,19 @@
-import { decodeProfile } from '@/data/profile'
+'use client'
+import { decodeProfile, buildProfile } from '@/data/profile'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 export default function Home() {
-  const profiles = [
-    'a0rj719a-e0y1C2-D3F0E0-DWUV2H-WHUcDi',
-    'l1og332r-G1k1d0-F1wAbB-vWnulf-Gs5LOX',
-    'L1h3047A-z2w2I1-Cn70C0-SQR98e-0Dh5KB',
-    'n0je640n-y2w2f0-qil023-kL72Sw-9yWiMj',
-    '51l7650u-a0y1p1-b0Et5v-qVaU24-5u8nCw',
-    'x0hb1441-p0E100-ryD0E7-kFnylm-lMAup0',
-    'u0r4a51f-x070s2-e5yqon-PvCUi4-4o2kgS',
-    'm0ph71a9-o1D0f2-c06Aje-Re3rH9-uJVwnz',
-  ].map(decodeProfile)
+  const [profiles, setProfiles] = useState([])
+
+  useEffect(() => {
+    const profiles = new Array(6).fill(0).map(buildProfile).map(decodeProfile)
+
+    // Yes this is a terrible way to do this, but it's stupid anyway so ¯\_(ツ)_/¯
+    const uniqueProfiles = profiles.filter((profile, index) => profiles.findIndex((p) => p.images[0].image === profile.images[0].image) === index)
+    setProfiles(uniqueProfiles)
+  }, [])
 
   const standouts = profiles.map(({ details, images, id }) => {
     return {
@@ -44,8 +45,8 @@ export default function Home() {
         <h1 className='text-center text-2xl font-bold text-slate-900'>Standouts</h1>
         <button className='rounded-full bg-primary px-4 py-2 font-bold hover:bg-primaryDark hover:text-white'>Roses (∞)</button>
       </div>
-      <p className='mb-8 px-4 text-xs text-slate-900'>Outstanding content from those most of your type. Refreshed daily. Okay, not really. But it&apos;s a nice thought.</p>
-      <div className='carousel carousel-center bg-neutral rounded-box mx-4 h-full w-full max-w-md space-x-4 p-4'>{carousel}</div>
+      <p className='mb-8 px-4 text-xs text-slate-900'>Outstanding content from those most of your type. Refreshed daily. Sorry that the roses are pointless.</p>
+      <div className='no-scrollbar carousel carousel-center bg-neutral rounded-box mx-4 h-full w-full max-w-md space-x-4 p-4'>{carousel}</div>
     </div>
   )
 }

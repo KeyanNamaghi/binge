@@ -13,7 +13,7 @@ export const getRandomPictureIds = (n) => {
 
   return getRandomValuesFromArray(pictures, n).map((picture, index) => {
     const pictureIndex = pictures.findIndex((val) => val === picture)
-    const captionIndex = Math.random() > 0.5 ? captions[index] : 0
+    const captionIndex = Math.random() > 0.2 ? captions[index] : 0
 
     return [pictureIndex, captionIndex]
   })

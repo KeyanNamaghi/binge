@@ -11,7 +11,7 @@ export default function Home({ params }) {
   return (
     <div className='no-scrollbar absolute flex h-full w-full flex-col items-center gap-6 overflow-scroll px-3 pb-8' id='home-page'>
       <div className='mt-8 w-full px-4 '>
-        <Link href='/standouts'>
+        <Link href='/likes-you'>
           <div className='flex w-full items-center'>
             <IconArrowBackOutline />
             <h1 className='ml-2 font-bold'>{data?.details?.name}</h1>
