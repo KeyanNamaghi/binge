@@ -28,10 +28,10 @@ export default function Home() {
           <span>Github</span>
           <PencilIcon />
         </a>
-        <div className='flex h-fit w-full items-center justify-between border-t border-neutral-300 py-4'>
+        <Link href='/settings/preferences' className='flex h-fit w-full items-center justify-between border-t border-neutral-300 py-4'>
           <span>Preferences</span>
           <SlidersIcon />
-        </div>
+        </Link>
         <button
           onClick={() => {
             localStorage.removeItem(MATCHES_STORAGE_KEY)
@@ -45,13 +45,10 @@ export default function Home() {
           <span>What Works</span>
           <LightbulbIcon />
         </div> */}
-        <a
-          href='https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnQzdHJoeHZvMDlzcDd0djVtMHB0dmpkc29xMG1uY2c5d3ptNDNrMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0G16JfAv3SY6iKNq/giphy.gif'
-          target='_blank'
-          className='flex h-fit w-full items-center justify-between border-t border-neutral-300 py-4'>
+        <Link href='/settings/help' className='flex h-fit w-full items-center justify-between border-t border-neutral-300 py-4'>
           <span>Help</span>
           <QuestionIcon />
-        </a>
+        </Link>
         <div className='flex h-fit w-full items-center justify-between border-t border-neutral-300 py-4'>
           <Link href='/login'>
             <span>Log Out</span>
