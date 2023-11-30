@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import MatchedProfile from './MatchedProfile'
 import { MatchMessage, UserMessage } from './Messages'
 import { redirect } from 'next/navigation'
@@ -12,6 +12,7 @@ const sendMessage = async (message, id) => {
       body: JSON.stringify({ message }),
     })
     const { conversation } = await res.json()
+    localStorage.setItem(`BINGE_${id}`, JSON.stringify(conversation))
     return conversation
   } catch (error) {
     console.error(error)
@@ -20,8 +21,9 @@ const sendMessage = async (message, id) => {
 
 const getConversation = async (id) => {
   try {
-    const req = await fetch(`/api/chat/${id}`)
-    return await req.json()
+    const saved = JSON.parse(localStorage.getItem(`BINGE_${id}`)) || []
+    // const req = await fetch(`/api/chat/${id}`)
+    return { conversation: saved }
   } catch (e) {
     console.log(e)
     redirect('/login')
@@ -29,6 +31,7 @@ const getConversation = async (id) => {
 }
 
 export const Chat = ({ id, profilePicture }) => {
+  const inputRef = useRef()
   const [pendingMessage, setPendingMessage] = useState(null)
   const [replyPending, setReplyPending] = useState(false)
   const [chat, setChat] = useState()
@@ -41,6 +44,12 @@ export const Chat = ({ id, profilePicture }) => {
     }
     fetchData()
   }, [id])
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus()
+    }
+  }, [inputRef, pendingMessage])
 
   const onSubmit = async (e) => {
     e.preventDefault()
@@ -101,7 +110,7 @@ export const Chat = ({ id, profilePicture }) => {
         <MatchedProfile id={id} />
       </div>
       <form className='flex w-full p-2' onSubmit={onSubmit}>
-        <input className='w-full rounded-full border border-neutral-300 px-4 py-1' disabled={pendingMessage} placeholder='Send a message' />
+        <input ref={inputRef} className='w-full rounded-full border border-neutral-300 px-4 py-1' disabled={pendingMessage} placeholder='Send a message' />
       </form>
     </>
   )

@@ -34,7 +34,11 @@ export default function Home() {
         </Link>
         <button
           onClick={() => {
-            localStorage.removeItem(MATCHES_STORAGE_KEY)
+            // get all keys that start with BINGE_
+            const keys = Object.keys(localStorage).filter((key) => key.startsWith('BINGE_'))
+            // remove all of them
+            keys.forEach((key) => localStorage.removeItem(key))
+
             alert("Sorry I know this is annoying but I don't have time to make a proper reset button 😅")
           }}
           className='flex h-fit w-full items-center justify-between border-t border-neutral-300 py-4'>

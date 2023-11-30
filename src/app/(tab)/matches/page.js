@@ -26,7 +26,16 @@ export default function Matches() {
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem(MATCHES_STORAGE_KEY)) || []
-    const data = ['M1i17300-21w150-7000ww-XW3ARU-uTifvS', ...saved].map(decodeProfile).reverse()
+
+    const data = ['M1i17300-21w150-7000ww-XW3ARU-uTifvS', ...saved]
+      .map(decodeProfile)
+      .reverse()
+      .map((profile) => {
+        const saved = JSON.parse(localStorage.getItem(`BINGE_${profile.id}`)) || []
+        const lastMessage = saved.pop()?.content
+
+        return { ...profile, message: lastMessage }
+      })
     setData(data)
   }, [])
 
@@ -39,8 +48,8 @@ export default function Matches() {
       </div>
 
       <div className='no-scrollbar flex h-full w-full flex-col overflow-scroll p-2 px-4' onScroll={debounce((e) => setScroll(e.target.scrollTop))}>
-        {data.map(({ id, details, images }) => (
-          <ChatPanel key={id} name={details.name} icon={images[0].image} id={id} />
+        {data.map(({ id, details, images, message }) => (
+          <ChatPanel key={id} name={details.name} icon={images[0].image} id={id} message={message} />
         ))}
       </div>
     </div>
