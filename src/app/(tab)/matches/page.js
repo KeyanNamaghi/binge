@@ -3,7 +3,7 @@ import { debounce } from '@/lib/debounce'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { MATCHES_STORAGE_KEY } from '@/lib/constants'
+import { BINGE_ID, MATCHES_STORAGE_KEY } from '@/lib/constants'
 import { decodeProfile } from '@/data/profile'
 
 const ChatPanel = ({ name, message, icon, id }) => {
@@ -26,8 +26,13 @@ export default function Matches() {
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem(MATCHES_STORAGE_KEY)) || []
+    let bingeId = localStorage.getItem(BINGE_ID) || ''
+    if (!bingeId) {
+      bingeId = crypto.randomUUID()
+      localStorage.setItem(BINGE_ID, bingeId)
+    }
 
-    const data = ['M1i17300-21w150-7000ww-XW3ARU-uTifvS', ...saved]
+    const data = [`M1i17300-21w150-7000ww-XW3ARU-uTifvS-${bingeId}`, ...saved]
       .map(decodeProfile)
       .reverse()
       .map((profile) => {
