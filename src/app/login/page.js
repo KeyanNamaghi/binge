@@ -11,6 +11,7 @@ export default function Home() {
       onSubmit={(event) => {
         event.preventDefault()
         document.cookie = `${usernameCookie}=${event.target.first_name.value}`
+        console.log(`${event.target.first_name.value} logged in`)
         router.push('/home')
       }}>
       <div className=' mx-8 mt-32'>

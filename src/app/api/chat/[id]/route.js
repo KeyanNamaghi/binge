@@ -25,7 +25,7 @@ export async function GET(request, context) {
 export async function POST(request, context) {
   const { id } = context.params
   const user = request.cookies.get(usernameCookie)
-  console.log(`${user} making post request`)
+  console.log(`${user?.value?.toLowerCase()} making post request`)
 
   if (!user) {
     return new Response(JSON.stringify({ error: 'No user provided' }, { status: 401 }))
