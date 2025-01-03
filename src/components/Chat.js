@@ -7,9 +7,10 @@ import { debounce } from '@/lib/debounce'
 
 const sendMessage = async (message, id) => {
   try {
+    const savedMessages = localStorage.getItem(`BINGE_${id}`) || '[]'
     const res = await fetch(`/api/chat/${id}`, {
       method: 'POST',
-      body: JSON.stringify({ message }),
+      body: JSON.stringify({ message, savedMessages }),
     })
     const { conversation } = await res.json()
     localStorage.setItem(`BINGE_${id}`, JSON.stringify(conversation))
@@ -22,7 +23,6 @@ const sendMessage = async (message, id) => {
 const getConversation = async (id) => {
   try {
     const saved = JSON.parse(localStorage.getItem(`BINGE_${id}`)) || []
-    // const req = await fetch(`/api/chat/${id}`)
     return { conversation: saved }
   } catch (e) {
     console.log(e)

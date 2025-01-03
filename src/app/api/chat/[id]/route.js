@@ -1,64 +1,45 @@
-import OpenAI from 'openai'
-import { kv } from '@vercel/kv'
 import { NextResponse } from 'next/server'
 import { usernameCookie } from '@/lib/constants'
 import { templateSystemContent } from '@/data/profile'
 
-export async function GET(request, context) {
-  const { id } = context.params
-  const user = request.cookies.get(usernameCookie)
-
-  if (!user) {
-    return new Response(JSON.stringify({ error: 'No user provided' }, { status: 401 }))
-  }
-
-  if (!id) {
-    return new Response(JSON.stringify({ error: 'No id provided' }))
-  }
-
-  const username = user.value.toLowerCase() || ''
-  const conversation = (await kv.get(`${username}:messages:${id}`)) || []
-
-  return NextResponse.json({ conversation })
-}
-
 export async function POST(request, context) {
   const { id } = context.params
   const user = request.cookies.get(usernameCookie)
-  console.log(`making post request`)
 
   if (!user) {
     return new Response(JSON.stringify({ error: 'No user provided' }, { status: 401 }))
   }
 
-  const username = user.value.toLowerCase() || ''
-  const savedMessages = (await kv.get(`${username}:messages:${id}`)) || []
-
   try {
-    const { message } = await request.json()
+    const { message, savedMessages = '[]' } = await request.json()
     if (!message) {
       return NextResponse.json({ error: 'No message provided' }, { status: 400 })
     }
 
-    const messages = [...savedMessages, { role: 'user', content: message }]
+    const messages = [...JSON.parse(savedMessages), { role: 'user', content: message }]
     const useAI = true // ['keyan', 'riina'].includes(username)
 
     let response = {}
 
     if (useAI) {
       const content = templateSystemContent(id)
-      const openai = new OpenAI({ apiKey: process.env.OPEN_AI_KEY })
-      const chatCompletion = await openai.chat.completions.create({
-        messages: [
-          {
-            role: 'system',
-            content,
-          },
-          ...messages,
-        ],
-        model: 'gpt-3.5-turbo',
+
+      const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${process.env.GROQ_KEY}`,
+        },
+        body: JSON.stringify({
+          model: 'llama-3.1-70b-versatile',
+          messages: [{ role: 'assistant', content }, ...messages],
+        }),
       })
-      response = chatCompletion.choices[0].message
+      const data = await res.json()
+      response = {
+        role: 'assistant',
+        content: data.choices[0].message.content,
+      }
     } else {
       await new Promise((resolve) => setTimeout(resolve, 1000 * (Math.random() + 1)))
       response = {
@@ -69,11 +50,10 @@ export async function POST(request, context) {
 
     const conversation = [...messages, response]
 
-    await kv.set(`${username}:messages:${id}`, conversation)
-
     return NextResponse.json({ conversation })
   } catch (e) {
-    console.log(e)
+    console.error('Something went wrong')
+    console.error(e)
     return NextResponse.json({ error: 'Something went wrong' }, { status: 500 })
   }
 }
@@ -85,6 +65,5 @@ export async function DELETE(_request, context) {
     return new Response(JSON.stringify({ error: 'No id provided' }))
   }
 
-  await kv.set(`messages:${id}`, [])
   return NextResponse.json({ success: true })
 }
