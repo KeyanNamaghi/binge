@@ -16,7 +16,8 @@ export async function POST(request, context) {
       return NextResponse.json({ error: 'No message provided' }, { status: 400 })
     }
 
-    const messages = [...JSON.parse(savedMessages), { role: 'user', content: message }]
+    const saved = savedMessages === 'undefined' ? '[]' : savedMessages
+    const messages = [...JSON.parse(saved), { role: 'user', content: message }]
     const useAI = true // ['keyan', 'riina'].includes(username)
 
     let response = {}
@@ -31,11 +32,12 @@ export async function POST(request, context) {
           Authorization: `Bearer ${process.env.GROQ_KEY}`,
         },
         body: JSON.stringify({
-          model: 'llama-3.1-70b-versatile',
+          model: 'llama-3.3-70b-versatile',
           messages: [{ role: 'assistant', content }, ...messages],
         }),
       })
       const data = await res.json()
+      console.log({ data })
       response = {
         role: 'assistant',
         content: data.choices[0].message.content,

@@ -97,7 +97,7 @@ export const Chat = ({ id, profilePicture }) => {
               })}
               {pendingMessage && <UserMessage message={pendingMessage} />}
               {replyPending && <MatchMessage message='...' profilePicture={profilePicture} />}
-              {chat?.length === 0 && (
+              {!pendingMessage && !replyPending && chat?.length === 0 && (
                 <div className='flex h-full items-end justify-center'>
                   <div className='mx-2 my-4 rounded-lg border border-neutral-300 px-8 py-4 text-center text-sm text-slate-900'>
                     Start the conversation by responding to one of the prompts on their profile.
