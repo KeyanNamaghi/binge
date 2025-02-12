@@ -18,7 +18,39 @@ const font = localFont({
 
 export const metadata = {
   title: 'Binge',
-  description: 'Better Hinge',
+  description: 'Binge is a raccoon based version of Hinge, but with more raccoons. Made by Keyan Namaghi.',
+  keywords: ['binge', 'hinge', 'raccoon', 'racoon', 'keyan', 'namaghi', 'ai', 'chat', 'groq', 'parody'],
+  alternates: {
+    canonical: 'https://binge.keyan.dev',
+  },
+  generator: 'Next.js',
+  applicationName: 'Binge',
+  referrer: 'origin-when-cross-origin',
+  authors: [{ name: 'Keyan Namaghi' }],
+  creator: 'Keyan Namaghi',
+  publisher: 'Keyan Namaghi',
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  icons: {
+    icon: '/vercel.svg',
+    shortcut: '/vercel.svg',
+    apple: '/vercel.svg',
+    other: {
+      rel: 'apple-touch-icon-precomposed',
+      url: '/vercel.svg',
+    },
+  },
 }
 
 export default function RootLayout({ children }) {
