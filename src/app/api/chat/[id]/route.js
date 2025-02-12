@@ -4,11 +4,7 @@ import { templateSystemContent } from '@/data/profile'
 
 export async function POST(request, context) {
   const { id } = context.params
-  const user = request.cookies.get(usernameCookie)
-
-  if (!user) {
-    return new Response(JSON.stringify({ error: 'No user provided' }, { status: 401 }))
-  }
+  const user = request.cookies.get(usernameCookie) ?? 'stranger'
 
   try {
     const { message, savedMessages = '[]' } = await request.json()
