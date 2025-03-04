@@ -1,5 +1,6 @@
 import './globals.css'
 import localFont from 'next/font/local'
+import { Analytics } from '@vercel/analytics/next'
 
 const font = localFont({
   src: [
@@ -60,6 +61,7 @@ export default function RootLayout({ children }) {
         <main className='grid h-[100dvh]	w-full grid-cols-1 items-center justify-between overflow-hidden border-0 border-slate-900 bg-white md:m-auto md:h-[90dvh] md:min-h-[85vh] md:w-[22vw] md:min-w-[380px] md:rounded-2xl md:border-8'>
           {children}
         </main>
+        <Analytics />
       </body>
     </html>
   )
